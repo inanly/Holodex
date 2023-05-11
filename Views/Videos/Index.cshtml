@@ -37,7 +37,7 @@
                     </div>
                 </div>
             }
-        }
+         }
         <h2>即將直播</h2>
         @foreach (var video in Model)
         {
@@ -46,8 +46,16 @@
                 <div class="col-md-4">
                     <div class="card mb-4">
                         <img src="@video.Channel.Photo" class="card-img-top" alt="@video.Channel.Name">
+                        
                         <div class="card-body">
                             <h5 class="card-title">@video.Title</h5>
+                            <form action="@Url.Action("AddFavoriteChannel", "Videos")" method="post">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="channelId" value="@video.Channel.Id" />
+                                <input type="hidden" name="channelName" value="@video.Channel.Name" />
+                                <input type="hidden" name="channelEnglishName" value="@video.Channel.EnglishName" />
+                                <button type="submit" class="btn btn-secondary">加入至我的最愛</button>
+                            </form>
                             <p class="card-text">
                                 Status: @video.Status <br />
                                 Start Scheduled: @video.StartScheduled <br />

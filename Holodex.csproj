@@ -188,8 +188,34 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305111008152_InitialCreate.cs" />
+    <Compile Include="Migrations\202305111008152_InitialCreate.designer.cs">
+      <DependentUpon>202305111008152_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305111204170_AddFavoriteChannel.cs" />
+    <Compile Include="Migrations\202305111204170_AddFavoriteChannel.designer.cs">
+      <DependentUpon>202305111204170_AddFavoriteChannel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305111226117_AddedFavoriteChannels.cs" />
+    <Compile Include="Migrations\202305111226117_AddedFavoriteChannels.designer.cs">
+      <DependentUpon>202305111226117_AddedFavoriteChannels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305111320490_AddedFavoriteChannels1.cs" />
+    <Compile Include="Migrations\202305111320490_AddedFavoriteChannels1.designer.cs">
+      <DependentUpon>202305111320490_AddedFavoriteChannels1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305111538192_AddedFavoriteChannels2.cs" />
+    <Compile Include="Migrations\202305111538192_AddedFavoriteChannels2.designer.cs">
+      <DependentUpon>202305111538192_AddedFavoriteChannels2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305111550006_AddedFavoriteChannels3.cs" />
+    <Compile Include="Migrations\202305111550006_AddedFavoriteChannels3.designer.cs">
+      <DependentUpon>202305111550006_AddedFavoriteChannels3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Channel.cs" />
+    <Compile Include="Models\FavoriteChannel.cs" />
     <Compile Include="Models\HolodexApiResponse.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -273,6 +299,7 @@
     <Content Include="Views\Videos\upcoming.cshtml" />
     <Content Include="Views\_Filter.cshtml" />
     <Content Include="Views\Videos\_Filter.cshtml" />
+    <Content Include="Views\Videos\Favorites.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -303,6 +330,26 @@
     <Content Include="Scripts\bootstrap.bundle.js.map" />
     <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\202305111008152_InitialCreate.resx">
+      <DependentUpon>202305111008152_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305111204170_AddFavoriteChannel.resx">
+      <DependentUpon>202305111204170_AddFavoriteChannel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305111226117_AddedFavoriteChannels.resx">
+      <DependentUpon>202305111226117_AddedFavoriteChannels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305111320490_AddedFavoriteChannels1.resx">
+      <DependentUpon>202305111320490_AddedFavoriteChannels1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305111538192_AddedFavoriteChannels2.resx">
+      <DependentUpon>202305111538192_AddedFavoriteChannels2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305111550006_AddedFavoriteChannels3.resx">
+      <DependentUpon>202305111550006_AddedFavoriteChannels3.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

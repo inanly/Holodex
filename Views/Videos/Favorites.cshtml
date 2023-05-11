@@ -1,0 +1,30 @@
+﻿@model List<Holodex.Models.FavoriteChannel>
+
+<h2>我的收藏頻道</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>頻道 ID</th>
+            <th>頻道名稱</th>
+            <th>頻道英文名稱</th>
+            <th>操作</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var channel in Model)
+        {
+            <tr>
+                <td>@channel.ChannelId</td>
+                <td>@channel.ChannelName</td>
+                <td>@channel.ChannelEnglishName</td>
+                <td>
+                    @using (Html.BeginForm("RemoveFavoriteChannel", "Videos", new { id = channel.Id }, FormMethod.Post))
+                    {
+                        <input type="submit" value="刪除" class="btn btn-danger" />
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

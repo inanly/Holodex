@@ -9,6 +9,7 @@ namespace Holodex.Models
         [Display(Name = "電子郵件")]
         public string Email { get; set; }
     }
+    
 
     public class ExternalLoginListViewModel
     {

@@ -7,6 +7,7 @@ namespace Holodex.Models
 {
     public class HolodexApiResponse : List<Video>
     {
+
         public List<Video> Data { get; set; }
 
         public HolodexApiResponse() { }

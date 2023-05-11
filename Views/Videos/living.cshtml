@@ -1,0 +1,42 @@
+﻿@model List<Holodex.Models.Video>
+
+@{
+    ViewBag.Title = "living";
+}
+
+<h2>Holodex API Live and Upcoming Videos</h2>
+
+@Html.Partial("_Filter")
+
+<div class="container">
+    <div class="row">
+        @foreach (var video in Model)
+        {
+            if(@video.Status== "live")
+            {
+
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="@video.Channel.Photo" class="card-img-top" alt="@video.Channel.Name">
+                            <div class="card-body">
+                                <h5 class="card-title">@video.Title</h5>
+                                <p class="card-text">
+                                    Status: @video.Status <br />
+                                    Start Scheduled: @video.StartScheduled <br />
+                                    Channel Name: @video.Channel.Name <br />
+                                    Channel English Name: @video.Channel.EnglishName<br />
+                                    Test:@video.Duration
+                                </p>
+                                <a href="https://www.youtube.com/watch?v=@video.Id" class="btn btn-primary" target="_blank">Watch on YouTube</a>
+                                <div class="embed-responsive embed-responsive-16by9">
+                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/@video.Id"></iframe>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+            }
+         
+        }
+    </div>
+</div>
+

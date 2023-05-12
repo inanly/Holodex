@@ -24,43 +24,6 @@ namespace YourNamespace.Controllers
         {
             _context = context;
         }
-
-        public async Task<ActionResult> Index(string search = "")
-        {
-            var result = await GetVideosAsync(search);
-
-            if (!string.IsNullOrWhiteSpace(search))
-            {
-                result = new HolodexApiResponse(result.Where(v => v.Channel.Name.ToLower().Contains(search.ToLower())).ToList());
-            }
-
-            return View(result);
-        }
-        public async Task<ActionResult> Living(string search = "")
-        {
-            var result = await GetVideosAsync(search);
-
-            if (!string.IsNullOrWhiteSpace(search))
-            {
-                result = new HolodexApiResponse(result.Where(v => v.Channel.Name.ToLower().Contains(search.ToLower())).ToList());
-            }
-
-            return View(result);
-        }
-        public async Task<ActionResult> Upcoming(string search = "")
-        {
-            var result = await GetVideosAsync(search);
-
-            if (!string.IsNullOrWhiteSpace(search))
-            {
-                result = new HolodexApiResponse(result.Where(v => v.Channel.Name.ToLower().Contains(search.ToLower())).ToList());
-            }
-
-            return View(result);
-        }
-
-        //
-        [HttpPost]
         public async Task<ActionResult> AddFavoriteChannel(string channelId, string channelName, string channelEnglishName)
         {
             var userId = User.Identity.GetUserId();
@@ -70,7 +33,7 @@ namespace YourNamespace.Controllers
                 ChannelId = channelId,
                 ChannelName = channelName,
                 ChannelEnglishName = channelEnglishName,
-                
+
             };
             _context.FavoriteChannels.Add(favoriteChannel);
             await _context.SaveChangesAsync();
@@ -91,38 +54,78 @@ namespace YourNamespace.Controllers
             return RedirectToAction("Favorites");
         }
 
-        public async Task<ActionResult> Favorites(string search = "")
+        public async Task<ActionResult> Favorites()
         {
-            var userId = User.Identity.GetUserId();
+            string userId = User.Identity.GetUserId();
+            var favoriteChannels = _context.FavoriteChannels.Where(fc => fc.UserId == userId).ToList();
 
-            // 获取用户的喜欢的频道
-            var favoriteChannels = await _context.FavoriteChannels
-                .Where(fc => fc.UserId == userId)
-                .ToListAsync();
+            var favoriteChannelViewModels = new List<FavoriteChannelViewModel>();
+
+            foreach (var favoriteChannel in favoriteChannels)
+            {
+                var videos = await GetVideosByChannelAsync(favoriteChannel.ChannelId);
+
+                var favoriteChannelViewModel = new FavoriteChannelViewModel
+                {
+                    FavoriteChannel = favoriteChannel,
+                    Videos = videos
+                };
+
+                favoriteChannelViewModels.Add(favoriteChannelViewModel);
+            }
+
+            return View(favoriteChannelViewModels);
+        }
+
+
+
+        public async Task<ActionResult> Index(string search = "")
+        {
             var result = await GetVideosAsync(search);
 
             if (!string.IsNullOrWhiteSpace(search))
             {
-                result = new HolodexApiResponse(result.Where(v => v.Channel.Name.ToLower().Contains(search.ToLower())).ToList());
+                result = result.Where(v => v.Channel.Name.ToLower().Contains(search.ToLower())).ToList();
             }
 
-            // 将收藏頻道传递到视图
-            return View(favoriteChannels);
+            return View(result);
+        }
+        public async Task<ActionResult> Living(string search = "")
+        {
+            var result = await GetVideosAsync(search);
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                result = result.Where(v => v.Channel.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
+
+            return View(result);
+        }
+        public async Task<ActionResult> Upcoming(string search = "")
+        {
+            var result = await GetVideosAsync(search);
+
+            if (!string.IsNullOrWhiteSpace(search))
+            {
+                result = result.Where(v => v.Channel.Name.ToLower().Contains(search.ToLower())).ToList();
+            }
+
+            return View(result);
         }
 
+        // ... (Keep other methods unchanged)
 
-        //
-        private async Task<List<Video>> GetVideosAsync(string search)
+        private async Task<List<Video>> GetVideosByChannelAsync(string channelId)
         {
-            var result = new HolodexApiResponse();
+            List<Video> result;
             var request = new HttpRequestMessage
             {
                 Method = HttpMethod.Get,
-                RequestUri = new Uri($"https://holodex.net/api/v2/live?search={search}&type=stream&status=live,upcoming&max_upcoming_hours=24&org=Hololive&sort=start_scheduled"),
+                RequestUri = new Uri($"https://holodex.net/api/v2/live?channel_id={channelId}&type=stream&status=live,upcoming&max_upcoming_hours=24&org=Hololive&sort=start_scheduled"),
                 Headers =
         {
             { "Accept", "application/json" },
-            { "X-APIKEY", "a69df232-609b-466f-8772-10939f05e8b4" },
+            { "X-APIKEY", "a69df232-609b-466f-8772-10939f05e8b4" },  // 请确保这是你的API密钥
         },
             };
 
@@ -130,11 +133,37 @@ namespace YourNamespace.Controllers
             {
                 response.EnsureSuccessStatusCode();
                 var body = await response.Content.ReadAsStringAsync();
-                result = JsonConvert.DeserializeObject<HolodexApiResponse>(body);
+                result = JsonConvert.DeserializeObject<List<Video>>(body);
             }
 
             return result;
         }
 
+
+
+
+        private async Task<List<Video>> GetVideosAsync(string search)
+        {
+            List<Video> result;
+            var request = new HttpRequestMessage
+            {
+                Method = HttpMethod.Get,
+                RequestUri = new Uri($"https://holodex.net/api/v2/live?search={search}&type=stream&status=live,upcoming&max_upcoming_hours=24&org=Hololive&sort=start_scheduled"),
+                Headers =
+                {
+                    { "Accept", "application/json" },
+                    { "X-APIKEY", "a69df232-609b-466f-8772-10939f05e8b4" },
+                },
+            };
+
+            using (var response = await client.SendAsync(request))
+            {
+                response.EnsureSuccessStatusCode();
+                var body = await response.Content.ReadAsStringAsync();
+                result = JsonConvert.DeserializeObject<List<Video>>(body);
+            }
+
+            return result;
+        }
     }
 }

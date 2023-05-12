@@ -212,10 +212,23 @@
     <Compile Include="Migrations\202305111550006_AddedFavoriteChannels3.designer.cs">
       <DependentUpon>202305111550006_AddedFavoriteChannels3.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202305120109192_AddedFavoriteChannels4.cs" />
+    <Compile Include="Migrations\202305120109192_AddedFavoriteChannels4.designer.cs">
+      <DependentUpon>202305120109192_AddedFavoriteChannels4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305120125019_AddedFavoriteChannels5.cs" />
+    <Compile Include="Migrations\202305120125019_AddedFavoriteChannels5.designer.cs">
+      <DependentUpon>202305120125019_AddedFavoriteChannels5.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202305120130312_AddedFavoriteChannels6.cs" />
+    <Compile Include="Migrations\202305120130312_AddedFavoriteChannels6.designer.cs">
+      <DependentUpon>202305120130312_AddedFavoriteChannels6.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Channel.cs" />
     <Compile Include="Models\FavoriteChannel.cs" />
+    <Compile Include="Models\FavoriteChannelViewModel.cs" />
     <Compile Include="Models\HolodexApiResponse.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
@@ -349,6 +362,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202305111550006_AddedFavoriteChannels3.resx">
       <DependentUpon>202305111550006_AddedFavoriteChannels3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305120109192_AddedFavoriteChannels4.resx">
+      <DependentUpon>202305120109192_AddedFavoriteChannels4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305120125019_AddedFavoriteChannels5.resx">
+      <DependentUpon>202305120125019_AddedFavoriteChannels5.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202305120130312_AddedFavoriteChannels6.resx">
+      <DependentUpon>202305120130312_AddedFavoriteChannels6.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -1,4 +1,4 @@
-﻿@model List<Holodex.Models.FavoriteChannel>
+﻿@model List<Holodex.Models.FavoriteChannelViewModel>
 
 <h2>我的收藏頻道</h2>
 
@@ -12,17 +12,32 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var channel in Model)
+        @foreach (var channelViewModel in Model)
         {
             <tr>
-                <td>@channel.ChannelId</td>
-                <td>@channel.ChannelName</td>
-                <td>@channel.ChannelEnglishName</td>
+                <td>@channelViewModel.FavoriteChannel.ChannelId</td>
+                <td>@channelViewModel.FavoriteChannel.ChannelName</td>
+                <td>@channelViewModel.FavoriteChannel.ChannelEnglishName</td>
                 <td>
-                    @using (Html.BeginForm("RemoveFavoriteChannel", "Videos", new { id = channel.Id }, FormMethod.Post))
+                    @using (Html.BeginForm("RemoveFavoriteChannel", "Videos", new { id = channelViewModel.FavoriteChannel.Id }, FormMethod.Post))
                     {
                         <input type="submit" value="刪除" class="btn btn-danger" />
                     }
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="4">
+                    <ul>
+                        @foreach (var video in channelViewModel.Videos)
+                        {
+                            <div>hello world</div>
+                            <div class="embed-responsive embed-responsive-16by9">
+                               
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/@video.Id"></iframe>
+                            </div>
+                        }
+                    </ul>
                 </td>
             </tr>
         }

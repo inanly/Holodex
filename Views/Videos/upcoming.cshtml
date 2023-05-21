@@ -1,28 +1,27 @@
-﻿
-@model List<Holodex.Models.Video>
+﻿@model List<Holodex.Models.Video>
+
 @{
-    ViewBag.Title = "upcoming";
+    ViewBag.Title = "living";
 }
 
 <h2>即將直播</h2>
 
 <div class="container">
     <div class="row">
-
         @foreach (var video in Model)
         {
-
             if (@video.Status == "upcoming")
             {
+
                 <div class="col-md-4 p-3 mb-2 bg-dark text-dark">
                     <div class="card mb-4">
                         @*<img src="@video.Channel.Photo" class="card-img-top" alt="@video.Channel.Name">*@
-                        <p class="card-text">
-                            @*Status: @video.Status <br />
-                        Start Scheduled: @video.StartScheduled <br />*@
-                            @*Channel English Name: @video.Channel.EnglishName<br />
-                        Test:@video.Duration*@
-                        </p>
+                        @*<p class="card-text">
+                                Status: @video.Status <br />
+                                Start Scheduled: @video.StartScheduled <br />
+                                Channel English Name: @video.Channel.EnglishName<br />
+                                Test:@video.Duration
+                            </p>*@
                         <div class="card-body">
                             <h5 class="card-title">@video.Title</h5>
                             @*<a href="https://www.youtube.com/watch?v=@video.Id" class="btn btn-primary" target="_blank">Watch on YouTube</a>*@
@@ -40,10 +39,12 @@
                                 <input type="hidden" name="channelEnglishName" value="@video.Channel.EnglishName" />
                                 <button type="submit" class="btn btn-primary mt-2">加入至我的最愛</button>
                             </form>
-                            </>
                         </div>
+                    </div>
                 </div>
             }
+
         }
     </div>
 </div>
+

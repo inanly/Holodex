@@ -18,13 +18,13 @@
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-1">
             @Html.LabelFor(m => m.Password, new { @class = "col-md-2 col-form-label" })
             <div class="col-md-10">
                 @Html.PasswordFor(m => m.Password, new { @class = "form-control" })
             </div>
         </div>
-        <div class="row">
+        <div class="row mt-1">
             @Html.LabelFor(m => m.ConfirmPassword, new { @class = "col-md-2 col-form-label" })
             <div class="col-md-10">
                 @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control" })
@@ -32,7 +32,7 @@
         </div>
         <div class="row">
             <div class="offset-md-2 col-md-10">
-                <input type="submit" value="註冊" class="btn btn-outline-dark" />
+                <input type="submit" value="註冊" class="btn btn-danger mt-1" />
             </div>
         </div>
     }

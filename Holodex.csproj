@@ -253,6 +253,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Css\main.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -273,6 +274,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Scripts\navdrawer.js" />
+    <Content Include="svg\caret-left-fill.svg" />
+    <Content Include="svg\google-play.svg" />
+    <Content Include="svg\holodex.png" />
+    <Content Include="svg\house.svg" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -311,7 +317,7 @@
     <Content Include="Views\Videos\living.cshtml" />
     <Content Include="Views\Videos\upcoming.cshtml" />
     <Content Include="Views\_Filter.cshtml" />
-    <Content Include="Views\Videos\_Filter.cshtml" />
+    <Content Include="Views\Shared\_Filter.cshtml" />
     <Content Include="Views\Videos\Favorites.cshtml" />
   </ItemGroup>
   <ItemGroup>

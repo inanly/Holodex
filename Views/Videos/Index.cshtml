@@ -1,79 +1,82 @@
 ﻿@model List<Holodex.Models.Video>
 
-
 @{
     ViewBag.Title = "Holodex API Live and Upcoming Videos";
 }
 
-<h2>Holodex API Live and Upcoming Videos</h2>
-
-@Html.Partial("_Filter")
-
-<div class="container">
-    <div class="row">
+<div class="container ">
+    <div class="row ">
 
         <h2>直播中</h2>
         @foreach (var video in Model)
         {
             if (@video.Status == "live")
             {
-                <div class="col-md-4">
+                <div class="col-md-4 p-3 mb-2 bg-dark text-dark">
                     <div class="card mb-4">
-                        <img src="@video.Channel.Photo" class="card-img-top" alt="@video.Channel.Name">
+                        @*<img src="@video.Channel.Photo" class="card-img-top" alt="@video.Channel.Name">*@
+                        <p class="card-text">
+                            @*Status: @video.Status <br />
+                            Start Scheduled: @video.StartScheduled <br />*@
+                            @*Channel English Name: @video.Channel.EnglishName<br />
+                            Test:@video.Duration*@
+                        </p>
                         <div class="card-body">
                             <h5 class="card-title">@video.Title</h5>
+                            @*<a href="https://www.youtube.com/watch?v=@video.Id" class="btn btn-primary" target="_blank">Watch on YouTube</a>*@
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/@video.Id"></iframe>
+                            </div>
+                            <div class="mt-2">
+                                <img class="myImage" src="@video.Channel.Photo">
+                                <a href="https://www.youtube.com/channel/@video.Channel.Id">@video.Channel.Name</a><br>
+                            </div>
                             <form action="@Url.Action("AddFavoriteChannel", "Videos")" method="post">
                                 @Html.AntiForgeryToken()
                                 <input type="hidden" name="channelId" value="@video.Channel.Id" />
                                 <input type="hidden" name="channelName" value="@video.Channel.Name" />
                                 <input type="hidden" name="channelEnglishName" value="@video.Channel.EnglishName" />
-                                <button type="submit" class="btn btn-secondary">加入至我的最愛</button>
+                                <button type="submit" class="btn btn-primary mt-2">加入至我的最愛</button>
                             </form>
-                            <p class="card-text">
-                                Status: @video.Status <br />
-                                Start Scheduled: @video.StartScheduled <br />
-                                Channel Name: @video.Channel.Name <br />
-                                Channel English Name: @video.Channel.EnglishName<br />
-                                Test:@video.Duration
-                            </p>
-                            <a href="https://www.youtube.com/watch?v=@video.Id" class="btn btn-primary" target="_blank">Watch on YouTube</a>
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/@video.Id"></iframe>
-                            </div>
                         </div>
                     </div>
                 </div>
             }
-         }
+        }
+        <hr>
         <h2>即將直播</h2>
         @foreach (var video in Model)
         {
             if (@video.Status == "upcoming")
             {
-                <div class="col-md-4">
+                <div class="col-md-4 p-3 mb-2 bg-dark text-dark">
                     <div class="card mb-4">
-                        <img src="@video.Channel.Photo" class="card-img-top" alt="@video.Channel.Name">
-                        
+                        @*<img src="@video.Channel.Photo" class="card-img-top" alt="@video.Channel.Name">*@
+                        <p class="card-text">
+                            @*Status: @video.Status <br />
+                            Start Scheduled: @video.StartScheduled <br />*@
+                            @*Channel English Name: @video.Channel.EnglishName<br />
+                            Test:@video.Duration*@
+                        </p>
                         <div class="card-body">
                             <h5 class="card-title">@video.Title</h5>
+
+
+                            @*<a href="https://www.youtube.com/watch?v=@video.Id" class="btn btn-primary" target="_blank">Watch on YouTube</a>*@
+                            <div class="embed-responsive embed-responsive-16by9">
+                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/@video.Id"></iframe>
+                            </div>
+                            <div class="mt-2">
+                                <img class="myImage" src="@video.Channel.Photo">
+                                <a href="https://www.youtube.com/channel/@video.Channel.Id">@video.Channel.Name</a><br>
+                            </div>
                             <form action="@Url.Action("AddFavoriteChannel", "Videos")" method="post">
                                 @Html.AntiForgeryToken()
                                 <input type="hidden" name="channelId" value="@video.Channel.Id" />
                                 <input type="hidden" name="channelName" value="@video.Channel.Name" />
                                 <input type="hidden" name="channelEnglishName" value="@video.Channel.EnglishName" />
-                                <button type="submit" class="btn btn-secondary">加入至我的最愛</button>
+                                <button type="submit" class="btn btn-primary mt-2">加入至我的最愛</button>
                             </form>
-                            <p class="card-text">
-                                Status: @video.Status <br />
-                                Start Scheduled: @video.StartScheduled <br />
-                                Channel Name: @video.Channel.Name <br />
-                                Channel English Name: @video.Channel.EnglishName<br />
-                                Test:@video.Duration
-                            </p>
-                            <a href="https://www.youtube.com/watch?v=@video.Id" class="btn btn-primary" target="_blank">Watch on YouTube</a>
-                            <div class="embed-responsive embed-responsive-16by9">
-                                <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/@video.Id"></iframe>
-                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "vue": "^3.3.2",
+    "vuetify": "^3.2.5"
+  }
+}

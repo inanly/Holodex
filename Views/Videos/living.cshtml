@@ -25,11 +25,13 @@
                             <div class="card-body">
                                 <h5 class="card-title">@video.Title</h5>
                                 @*<a href="https://www.youtube.com/watch?v=@video.Id" class="btn btn-primary" target="_blank">Watch on YouTube</a>*@
-                                <div class="embed-responsive embed-responsive-16by9">
-                                    <iframe class="embed-responsive-item" src="https://www.youtube.com/embed/@video.Id"></iframe>
-                                </div>
+                                <a onclick="redirectToVideo('@video.Id')">
+                                    <img class="embed-responsive embed-responsive-16by9" src="http://img.youtube.com/vi/@video.Id/sddefault.jpg" />
+                                </a>
                                 <div class="mt-2">
-                                    <img class="myImage" src="@video.Channel.Photo">
+                                    <a href="https://www.youtube.com/channel/@video.Channel.Id">
+                                        <img class="myImage" src="@video.Channel.Photo">
+                                    </a>
                                     <a href="https://www.youtube.com/channel/@video.Channel.Id">@video.Channel.Name</a><br>
                                 </div>
                                 <form action="@Url.Action("AddFavoriteChannel", "Videos")" method="post">

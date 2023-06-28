@@ -113,7 +113,20 @@ namespace YourNamespace.Controllers
             return View(result);
         }
 
-        // ... (Keep other methods unchanged)
+        public ActionResult VideoPage(string videoId)
+        {
+            // 根据videoId进行相应的处理
+            // 可以从数据库中获取特定视频的详细信息或执行其他操作
+
+            // 创建一个ViewModel来传递数据到VideoPage视图
+
+            var view = new Video
+            {
+                Id = videoId
+            };
+
+            return View(view);
+        }
 
         private async Task<List<Video>> GetVideosByChannelAsync(string channelId)
         {
@@ -125,7 +138,7 @@ namespace YourNamespace.Controllers
                 Headers =
         {
             { "Accept", "application/json" },
-            { "X-APIKEY", "a69df232-609b-466f-8772-10939f05e8b4" },  // 请确保这是你的API密钥
+            { "X-APIKEY", "a69df232-609b-466f-8772-10939f05e8b4" },  
         },
             };
 
@@ -139,8 +152,10 @@ namespace YourNamespace.Controllers
             return result;
         }
 
+        //
+        
 
-
+        //
 
         private async Task<List<Video>> GetVideosAsync(string search)
         {

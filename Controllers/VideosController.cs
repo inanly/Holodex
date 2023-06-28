@@ -113,7 +113,7 @@ namespace YourNamespace.Controllers
             return View(result);
         }
 
-        // ... (Keep other methods unchanged)
+        
 
         private async Task<List<Video>> GetVideosByChannelAsync(string channelId)
         {
@@ -125,7 +125,7 @@ namespace YourNamespace.Controllers
                 Headers =
         {
             { "Accept", "application/json" },
-            { "X-APIKEY", "a69df232-609b-466f-8772-10939f05e8b4" },  // 请确保这是你的API密钥
+            { "X-APIKEY", "a69df232-609b-466f-8772-10939f05e8b4" }, 
         },
             };
 

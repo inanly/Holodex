@@ -20,15 +20,10 @@
 </div>
 
 <script>
-    // 在這裡你可以使用 JavaScript 或其他方法載入影片的聊天室
-    // 請根據你使用的聊天室服務提供者的指示進行操作
-    // 這裡只是一個示例
-    // 你可以使用 YouTube 的 iframe API 或其他方法載入聊天室
-
-    // 以下是使用 YouTube iframe API 載入聊天室的示例
+    
     var videoId = '@Model.Id';
     var chatroomContainer = document.getElementById('chatroom');
-    var chatroomUrl = 'https://www.youtube.com/live_chat?v=@Model.Id&embed_domain=localhost:44373';
+    var chatroomUrl = 'https://www.youtube.com/live_chat?v=@Model.Id&embed_domain=localhost';
 
     // 使用 iframe 載入聊天室
     var chatroomIframe = document.createElement('iframe');

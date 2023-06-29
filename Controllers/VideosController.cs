@@ -115,10 +115,7 @@ namespace YourNamespace.Controllers
 
         public ActionResult VideoPage(string videoId)
         {
-            // 根据videoId进行相应的处理
-            // 可以从数据库中获取特定视频的详细信息或执行其他操作
-
-            // 创建一个ViewModel来传递数据到VideoPage视图
+            
 
             var view = new Video
             {

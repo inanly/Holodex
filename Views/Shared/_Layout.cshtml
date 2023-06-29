@@ -38,7 +38,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <img src="~/svg/holodex.png" class="Image ml-1 mr-1">
-                
+
                 @Html.ActionLink("Holodex", "Index", "Videos", new { area = "" }, new { @class = "navbar-brand " })
             </div>
             <div class="ml-auto">
@@ -92,7 +92,12 @@
         </p>
         <p>&copy; @DateTime.Now.Year - Holodex</p>
     </footer>
-
+    <script>
+    function redirectToVideo(videoId) {
+        var url = '@Url.Action("VideoPage", "Videos")' + '?videoId=' + videoId;
+        window.open(url);
+    }
+    </script>
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>

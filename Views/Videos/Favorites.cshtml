@@ -1,5 +1,6 @@
 ﻿@model List<Holodex.Models.FavoriteChannelViewModel>
 
+
 <h2>我的收藏頻道</h2>
 
 <div class="container">
@@ -20,14 +21,15 @@
                     <div class="card mb-4">
                         <div class="card-body">
                             <h5 class="card-title">@video.Title</h5>
-
                             <a onclick="redirectToVideo('@video.Id')">
-                                <img class="embed-responsive embed-responsive-16by9" src="http://img.youtube.com/vi/@video.Id/sddefault.jpg" />
+                                <img class="embed-responsive embed-responsive-16by9" src="http://img.youtube.com/vi/@video.Id/maxresdefault.jpg" />
                             </a>
-                            <a href="https://www.youtube.com/channel/@video.Channel.Id">
-                                <img class="myImage" src="@video.Channel.Photo">
-                            </a>
-                            <a href="https://www.youtube.com/channel/@video.Channel.Id">@video.Channel.Name</a><br>
+                            <div class="mt-2">
+                                <a href="https://www.youtube.com/channel/@video.Channel.Id">
+                                    <img class="myImage" src="@video.Channel.Photo">
+                                </a>
+                                <a href="https://www.youtube.com/channel/@video.Channel.Id">@video.Channel.Name</a><br>
+                            </div>
                         </div>
                     </div>
                 </div>

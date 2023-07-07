@@ -278,6 +278,8 @@
     <Content Include="svg\google-play.svg" />
     <Content Include="svg\holodex.png" />
     <Content Include="svg\house.svg" />
+    <Content Include="svg\play.svg" />
+    <Content Include="svg\play2.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

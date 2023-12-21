@@ -276,6 +276,7 @@
     <Content Include="Scripts\navdrawer.js" />
     <Content Include="svg\caret-left-fill.svg" />
     <Content Include="svg\google-play.svg" />
+    <Content Include="svg\heart.png" />
     <Content Include="svg\holodex.png" />
     <Content Include="svg\house.svg" />
     <Content Include="svg\play.svg" />
